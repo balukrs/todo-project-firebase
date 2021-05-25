@@ -1,0 +1,138 @@
+@import "../../style/scss/variables";
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
+
+.temp {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.firebase__auth {
+  background-color: darken($color-primary, 3%);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth__container {
+  background-color: $color-secondary;
+  padding: 20px;
+  font-family: "Roboto", sans-serif;
+  width: 300px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+  border-radius: 7px;
+}
+
+.auth_logo_cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 8px;
+  margin: 10px 0;
+
+  h2 {
+    margin: 0;
+    margin-left: 8px;
+    font-family: "Rock Salt", cursive;
+  }
+}
+
+.login___btn {
+  width: 97%;
+  padding: 10px;
+  margin-left: 3px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  background-color: rgb(245, 241, 241);
+  transition: all 0.4s ease;
+  z-index: 2;
+  &:hover {
+    background-color: darken(rgb(245, 241, 241), 10%);
+  }
+}
+.register___btn {
+  @extend .login___btn;
+}
+.google___btn {
+  @extend .login___btn;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    margin-left: 5px;
+    font-weight: 600;
+  }
+}
+.login___btn,
+.register___btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//Forms
+.general__form {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5px;
+  padding: 8px;
+  background-color: rgba(97, 110, 134, 0.534);
+  border-radius: 3px;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 8px;
+  display: none;
+  opacity: 0.1;
+  transform: translateY(-25px);
+}
+.input__cont {
+  width: 100%;
+  margin-bottom: 5px;
+  position: relative;
+
+  input {
+    width: 95%;
+    position: relative;
+    padding: 6px;
+    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.4);
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 2px;
+  }
+}
+.form__error {
+  color: rgb(236, 160, 160);
+  font-size: 12px;
+}
+
+//Opening Form
+.login__form {
+  display: block;
+  animation: drop 0.5s ease forwards;
+}
+.reg__form {
+  @extend .login__form;
+}
+
+//Animation
+@keyframes drop {
+  0% {
+    opacity: 0.1;
+    transform: translateY(-25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

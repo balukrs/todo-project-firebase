@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import styles from "./auth.module.scss";
 import { useForm, useField } from "react-final-form-hooks";
 
-const Registeruser = ({ reg, stats }) => {
+const Loginuser = ({ log, stats }) => {
   const [status, setStatus] = useState("");
   useEffect(() => {
     if (stats === true) {
-      setStatus(styles.reg__form);
+      setStatus(styles.login__form);
     } else setStatus("");
   }, [stats]);
 
   const onSubmit = async (values, form) => {
     const email = values.EmailId;
     const password = values.Password;
-    reg(email, password);
+    log(email, password);
     form.restart();
   };
 
@@ -44,11 +44,7 @@ const Registeruser = ({ reg, stats }) => {
       className={`${styles.general__form} ${status}`}
     >
       <div className={styles.input__cont}>
-        <input
-          autoComplete="off"
-          placeholder={`Enter new Email Id`}
-          {...EmailId.input}
-        />
+        <input autoComplete="off" placeholder={`Email Id`} {...EmailId.input} />
         {EmailId.meta.touched && EmailId.meta.error && (
           <span className={styles.form__error}>{EmailId.meta.error}</span>
         )}
@@ -57,7 +53,7 @@ const Registeruser = ({ reg, stats }) => {
         <input
           type="password"
           autoComplete="off"
-          placeholder={`Enter new Password`}
+          placeholder={`Password`}
           {...Password.input}
         />
         {Password.meta.touched && Password.meta.error && (
@@ -66,10 +62,10 @@ const Registeruser = ({ reg, stats }) => {
       </div>
 
       <button type="submit" disabled={submitting} className={styles.small__btn}>
-        Register
+        Log In
       </button>
     </form>
   );
 };
 
-export default Registeruser;
+export default Loginuser;
