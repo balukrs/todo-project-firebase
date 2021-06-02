@@ -1,0 +1,29 @@
+@import "./variables";
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: 0;
+}
+
+input {
+  &:focus {
+    outline: none;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+.small__btn {
+  padding: 4px 10px;
+  border-radius: 2px;
+  background-color: rgb(255, 252, 252);
+  transition: all 0.4s ease;
+  &:hover {
+    background-color: var(--color-tertiary);
+    color: white;
+  }
+  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.4);
+}

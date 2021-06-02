@@ -4,6 +4,7 @@ import { useForm, useField } from "react-final-form-hooks";
 
 const Registeruser = ({ reg, stats }) => {
   const [status, setStatus] = useState("");
+
   useEffect(() => {
     if (stats === true) {
       setStatus(styles.reg__form);
@@ -45,6 +46,7 @@ const Registeruser = ({ reg, stats }) => {
     >
       <div className={styles.input__cont}>
         <input
+          className={styles.input__prime}
           autoComplete="off"
           placeholder={`Enter new Email Id`}
           {...EmailId.input}
@@ -55,6 +57,7 @@ const Registeruser = ({ reg, stats }) => {
       </div>
       <div className={styles.input__cont}>
         <input
+          className={styles.input__prime}
           type="password"
           autoComplete="off"
           placeholder={`Enter new Password`}

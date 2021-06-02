@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import Sidebar from "./components/layout/sidebar";
+import Mainlayout from "./components/layout/mainlayout/mainlayout";
 import Auth from "./components/auth/auth";
 
 import { LoginContext } from "./context";
@@ -11,7 +11,7 @@ const App = () => {
     <div className="App">
       {logindetails ? (
         <LoginContext.Provider value={logindetails}>
-          <Sidebar />
+          <Mainlayout />
         </LoginContext.Provider>
       ) : (
         <Auth setdetails={setLogindetails} />

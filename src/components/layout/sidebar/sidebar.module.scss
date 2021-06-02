@@ -1,0 +1,81 @@
+@import "../../../style/scss/variables";
+@import "../../../style/scss/basestyle";
+
+.sidebar {
+  background-color: rgb(163, 161, 161);
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.sidebar__header {
+  width: 100%;
+  position: relative;
+  margin-top: 10px;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      margin-left: 10px;
+    }
+    .nav__details {
+      width: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-right: 10px;
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.sidebar__generic {
+  padding: 0;
+  li {
+    background-color: grey;
+    margin-bottom: 5px;
+    padding: 3px;
+    cursor: pointer;
+  }
+}
+
+//Middle
+.sidebar__middle_header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar__middle_btncont {
+  width: 100%;
+  button {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    justify-content: center;
+    padding: 5px;
+  }
+}
+
+//Project
+.sidebar__projects {
+  padding: 0;
+  li {
+    width: 100%;
+    cursor: pointer;
+    background-color: rgb(124, 119, 119);
+    margin: auto;
+    margin-bottom: 3px;
+  }
+}
+
+.sidebar__lower {
+  div {
+    background-color: rgb(129, 126, 126);
+    margin-bottom: 3px;
+    cursor: pointer;
+  }
+}

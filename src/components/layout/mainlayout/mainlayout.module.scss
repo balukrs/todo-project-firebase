@@ -1,0 +1,13 @@
+@import "../../../style/scss/variables";
+@import "../../../style/scss/basestyle";
+
+.main__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.layout__cointainer {
+  display: flex;
+}

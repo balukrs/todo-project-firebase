@@ -1,0 +1,29 @@
+/* Animate on Checkbox */
+.sidepanel__animate {
+  transform: scale(1);
+  animation: shrink 0.2s ease-in forwards;
+}
+
+@keyframes shrink {
+  0% {
+    transform: scaleY(1);
+  }
+  25% {
+    transform: scaleY(0.7);
+  }
+  50% {
+    transform: scaleY(0.3);
+  }
+  100% {
+    transform: scaleY(0);
+  }
+}
+
+/* Details */
+.sidepanel__details {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+  background-color: rgb(129, 127, 127);
+}

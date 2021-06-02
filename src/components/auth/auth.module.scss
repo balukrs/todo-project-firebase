@@ -1,3 +1,4 @@
+@import "../../style/scss/basestyle";
 @import "../../style/scss/variables";
 @import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
 
@@ -8,7 +9,7 @@
 }
 
 .firebase__auth {
-  background-color: darken($color-primary, 3%);
+  background-color: $color-primary;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -20,7 +21,7 @@
   background-color: $color-secondary;
   padding: 20px;
   font-family: "Roboto", sans-serif;
-  width: 300px;
+  width: 400px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
     0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
@@ -32,7 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+
   padding: 8px;
   margin: 10px 0;
 
@@ -40,6 +41,7 @@
     margin: 0;
     margin-left: 8px;
     font-family: "Rock Salt", cursive;
+    color: white;
   }
 }
 
@@ -100,20 +102,18 @@
   width: 100%;
   margin-bottom: 5px;
   position: relative;
-
-  input {
-    width: 95%;
-    position: relative;
-    padding: 6px;
-    box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.4);
-    border: none;
-    border-radius: 3px;
-    margin-bottom: 2px;
+  .input__prime {
+    width: 100%;
   }
 }
+
 .form__error {
   color: rgb(236, 160, 160);
   font-size: 12px;
+}
+.login__error {
+  @extend .form__error;
+  font-size: 15px;
 }
 
 //Opening Form

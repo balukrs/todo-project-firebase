@@ -1,0 +1,11 @@
+.menu__cont {
+  position: relative;
+}
+.reff__cont {
+  opacity: 0;
+  color: red;
+  position: absolute;
+  top: 10;
+  right: 0;
+  transform: translate(50px);
+}

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./auth.module.scss";
 import { useForm, useField } from "react-final-form-hooks";
 
-const Loginuser = ({ log, stats }) => {
+const Loginuser = ({ log, stats, loaderstats }) => {
   const [status, setStatus] = useState("");
+
   useEffect(() => {
     if (stats === true) {
       setStatus(styles.login__form);
@@ -44,13 +45,19 @@ const Loginuser = ({ log, stats }) => {
       className={`${styles.general__form} ${status}`}
     >
       <div className={styles.input__cont}>
-        <input autoComplete="off" placeholder={`Email Id`} {...EmailId.input} />
+        <input
+          className={styles.input__prime}
+          autoComplete="off"
+          placeholder={`Email Id`}
+          {...EmailId.input}
+        />
         {EmailId.meta.touched && EmailId.meta.error && (
           <span className={styles.form__error}>{EmailId.meta.error}</span>
         )}
       </div>
       <div className={styles.input__cont}>
         <input
+          className={styles.input__prime}
           type="password"
           autoComplete="off"
           placeholder={`Password`}

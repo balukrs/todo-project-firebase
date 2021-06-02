@@ -75,9 +75,6 @@ const Auth = ({ setdetails }) => {
 
   return (
     <div className={styles.firebase__auth}>
-      <button onClick={() => logoutUser()} className={styles.temp}>
-        SignOut
-      </button>
       <div className={styles.auth__container}>
         <div className={styles.auth_logo_cont}>
           <SiTodoist color="#e83a0e" size="2em" />
@@ -117,6 +114,7 @@ const Auth = ({ setdetails }) => {
           </button>
           <Registeruser reg={registerUser} stats={regswitch} />
         </div>
+        <span className={styles.login__error}>{err}</span>
       </div>
     </div>
   );
