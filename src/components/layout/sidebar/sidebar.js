@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Modalproject from "../addproject/modalproject";
 import styles from "./sidebar.module.scss";
@@ -59,13 +59,13 @@ const Sidebar = ({ toggle, id }) => {
           </span>
           <span>Inbox</span>
         </li>
-        <li onClick={() => handleClick("INBOX")}>
+        <li onClick={() => handleClick("TODAY")}>
           <span>
             <IoToday />
           </span>
           <span>Today</span>
         </li>
-        <li onClick={() => handleClick("INBOX")}>
+        <li onClick={() => handleClick("NEXT_7")}>
           <span>
             <IoCalendar />
           </span>
@@ -91,7 +91,6 @@ const Sidebar = ({ toggle, id }) => {
 
       <div className={styles.sidebar__lower}>
         <div onClick={() => handleClick("COMPLETED")}>Completed</div>
-        <div onClick={() => handleClick("DELETED")}>Deleted</div>
       </div>
     </div>
   );

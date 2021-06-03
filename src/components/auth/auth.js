@@ -27,18 +27,6 @@ const Auth = ({ setdetails }) => {
       });
   };
 
-  const logoutUser = () => {
-    auth
-      .signOut()
-      .then(() => {})
-      .catch((error) => {
-        if (error) {
-          const { message } = error;
-          setErr(message);
-        }
-      });
-  };
-
   const registerUser = (email, password) => {
     auth
       .createUserWithEmailAndPassword(email, password)
@@ -71,6 +59,7 @@ const Auth = ({ setdetails }) => {
         setdetails(user);
       }
     });
+    // eslint-disable-next-line
   }, []);
 
   return (

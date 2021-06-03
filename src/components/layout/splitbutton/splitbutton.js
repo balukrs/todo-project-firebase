@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 
 import { useProject } from "../../../hooks";
 import { useChange } from "../../../hooks";
+import { useDelete } from "../../../hooks";
 
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
@@ -32,21 +33,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const options = ["Create", "Squash", "Rebase "];
-
 const SplitButton = ({ userid, docid }) => {
   const classes = useStyles();
   const posEl = useRef();
   const projects = useProject(userid);
   const setRes = useChange(docid);
+  // eslint-disable-next-line
+  const [del, setDel] = useDelete(docid);
   const [anchorEl, setAnchorEl] = useState(null);
   const [subanchorEl, setSubanchorEl] = useState(null);
 
   const subhandleClick = (event) => {
     setSubanchorEl(event.currentTarget);
   };
-  const subhandleDelete = (event) => {
-    setRes("DELETED");
+
+  const deleteTask = () => {
+    setDel("delete");
     handleClose();
   };
 
@@ -62,6 +64,7 @@ const SplitButton = ({ userid, docid }) => {
   const changeProject = (e, val) => {
     e.preventDefault();
     setRes(val);
+    handleClose();
   };
 
   const ListMenu = () => {
@@ -74,6 +77,7 @@ const SplitButton = ({ userid, docid }) => {
       return () => {
         setProj([]);
       };
+      // eslint-disable-next-line
     }, [projects]);
 
     return (
@@ -126,7 +130,7 @@ const SplitButton = ({ userid, docid }) => {
           <MenuItem onClick={subhandleClick} className={classes.menu}>
             Move to <RiArrowDropRightFill size="1.5em" />
           </MenuItem>
-          <MenuItem onClick={subhandleDelete} className={classes.delete}>
+          <MenuItem className={classes.delete} onClick={() => deleteTask()}>
             Delete
           </MenuItem>
         </Menu>

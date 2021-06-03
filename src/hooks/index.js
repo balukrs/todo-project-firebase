@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FirebaseDB } from "../firebase";
 
 // Fetch tasks
@@ -6,6 +6,10 @@ export const useFetch = (id, project) => {
   const [task, setTask] = useState([]);
 
   useEffect(() => {
+    if (project === "TODAY" || project === "NEXT_7") {
+      project = "INBOX";
+    }
+
     let ref = FirebaseDB.collection("tasks")
       .where("projectid", "==", project)
       .where("userid", "==", id);
@@ -48,7 +52,7 @@ export const useTask = (project) => {
 
   useEffect(() => {
     const fethFunc = (val) => {
-      const ref = FirebaseDB.collection(project)
+      FirebaseDB.collection(project)
         .add(val)
         .then(() => {
           setResult("added");
@@ -62,7 +66,7 @@ export const useTask = (project) => {
     if (data) {
       fethFunc(data);
     }
-  }, [data]);
+  }, [data, project]);
 
   const submitData = (val) => {
     setData(val);
@@ -74,12 +78,13 @@ export const useTask = (project) => {
 //Modify Task
 export const useChange = (docid) => {
   const [data, setData] = useState(null);
+  // eslint-disable-next-line
   const [result, setResult] = useState(null);
 
   useEffect(() => {
     const fethFunc = (val) => {
-      const ref = FirebaseDB.collection("tasks").doc(docid);
-      return ref
+      FirebaseDB.collection("tasks")
+        .doc(docid)
         .update({
           projectid: val,
         })
@@ -96,11 +101,42 @@ export const useChange = (docid) => {
       fethFunc(data);
     }
     return () => setData(null);
-  }, [data]);
+  }, [data, docid]);
 
   const submitData = (val) => {
     setData(val);
   };
 
   return submitData;
+};
+
+//Remove Task
+export const useDelete = (docid) => {
+  const [data, setData] = useState(null);
+  const [result, setResult] = useState(null);
+
+  useEffect(() => {
+    const fethFunc = () => {
+      FirebaseDB.collection("tasks")
+        .doc(docid)
+        .delete()
+        .then(() => {
+          setResult("deleted");
+        })
+        .catch((error) => {
+          setResult("notdeleted");
+        });
+    };
+
+    if (data === "delete") {
+      fethFunc();
+    }
+    return () => setData(null);
+  }, [data, docid]);
+
+  const submitData = (val) => {
+    setData(val);
+  };
+
+  return [result, submitData];
 };

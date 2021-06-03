@@ -15,11 +15,12 @@ const Modalproject = ({ status, close }) => {
   const [stats, setStats] = useState(false);
 
   useEffect(() => {
-    if (res == "added") {
+    if (res === "added") {
       setStats(false);
       setInputval("");
       handleClose();
     }
+    // eslint-disable-next-line
   }, [res]);
 
   useEffect(() => {
