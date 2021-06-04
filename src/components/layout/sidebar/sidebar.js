@@ -8,20 +8,26 @@ import { IoToday } from "react-icons/io5";
 import { IoCalendar } from "react-icons/io5";
 import { BiChevronDown } from "react-icons/bi";
 import { SiTodoist } from "react-icons/si";
-import { MdNotificationsNone } from "react-icons/md";
+import Avatar from "@material-ui/core/Avatar";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { IoMdAddCircle } from "react-icons/io";
 
 import { auth } from "../../../firebase";
 
 import { useProject } from "../../../hooks";
+import { useProjdel } from "../../../hooks";
 
-const Sidebar = ({ toggle, id }) => {
+const Sidebar = ({ toggle, id, pic, email }) => {
   const [modal, setModal] = useState(false);
   const projects = useProject(id);
+  const [del, setDel] = useProjdel(id);
 
   const handleClick = (val) => {
     toggle(val);
+  };
+
+  const delProjects = (project) => {
+    setDel(project);
   };
 
   const projectDetails = () => {
@@ -30,7 +36,15 @@ const Sidebar = ({ toggle, id }) => {
     }
     return projects.map((project, index) => (
       <li key={index} onClick={() => handleClick(project.projectid)}>
-        {project.projectid}
+        <span>{project.projectid}</span>
+        <span
+          className={styles.project__close}
+          onClick={() => {
+            delProjects(project.projectid);
+          }}
+        >
+          x
+        </span>
       </li>
     ));
   };
@@ -42,13 +56,30 @@ const Sidebar = ({ toggle, id }) => {
           <div className={styles.logo}>
             <SiTodoist size="1.5em" />
           </div>
-          <div className={styles.nav__details}>
+          <div className={styles.nav__heading}>
             <span>
-              <MdNotificationsNone size="1.5em" />
+              <h3>ToDoApp</h3>
             </span>
-            <span onClick={() => auth.signOut()}>
+          </div>
+        </nav>
+        <nav>
+          <div className={styles.avatar}>
+            <Avatar
+              alt="T"
+              src={pic}
+              style={{
+                width: "40px",
+                boxShadow: "0.5px 1px 2px 0px rgba(0,0,0,0.75)",
+              }}
+            />
+          </div>
+          <div>
+            <h4>{email.split("@")[0]}</h4>
+          </div>
+          <div className={styles.nav__logout}>
+            <button onClick={() => auth.signOut()}>
               <RiLogoutBoxRLine size="1.4em" />
-            </span>
+            </button>
           </div>
         </nav>
       </header>
@@ -75,12 +106,11 @@ const Sidebar = ({ toggle, id }) => {
 
       <div className={styles.sidebar__middle}>
         <span className={styles.sidebar__middle_header}>
-          <h2>Projects</h2>
-          <BiChevronDown />
+          <h2>PROJECTS</h2>
         </span>
         <div className={styles.sidebar__middle_btncont}>
           <button onClick={(e) => setModal(!modal)}>
-            <span>Add Project</span> <IoMdAddCircle />
+            <span>Add Project</span> <IoMdAddCircle size="1.2em" />
           </button>
           <div>
             <Modalproject status={modal} close={setModal} />

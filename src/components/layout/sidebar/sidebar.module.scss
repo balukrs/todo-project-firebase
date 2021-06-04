@@ -1,31 +1,48 @@
-@import "../../../style/scss/variables";
 @import "../../../style/scss/basestyle";
 
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-tertiary: var(--color-tertiary);
+$color-light: var(--color-light);
+$color-dark: var(--color-dark);
+$color-extra: var(--color-extra);
+
 .sidebar {
-  background-color: rgb(163, 161, 161);
+  background-color: rgba($color-tertiary, 1);
   display: flex;
   flex-direction: column;
   width: 250px;
+  color: rgba($color-light, 0.8);
 }
 
 .sidebar__header {
   width: 100%;
   position: relative;
-  margin-top: 10px;
   nav {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    height: 45px;
     .logo {
       margin-left: 10px;
-    }
-    .nav__details {
-      width: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       margin-right: 10px;
-      span {
-        cursor: pointer;
+    }
+    .avatar {
+      margin-left: 5px;
+      margin-right: 10px;
+    }
+    .nav__logout {
+      margin-right: 10px;
+      position: absolute;
+      right: 0;
+      button {
+        background-color: rgba($color-primary, 0.3);
+        padding: 3.5px 5px;
+        border-radius: 50%;
+        box-shadow: 1px 0.5px 2px 0px rgba(0, 0, 0, 0.75);
+        transition: all ease 0.5s;
+        &:hover {
+          background-color: rgba($color-primary, 0.5);
+        }
       }
     }
   }
@@ -34,10 +51,20 @@
 .sidebar__generic {
   padding: 0;
   li {
-    background-color: grey;
+    background-color: rgba($color-primary, 0.3);
     margin-bottom: 5px;
-    padding: 3px;
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 5px;
     cursor: pointer;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    &:hover {
+      background-color: rgba($color-primary, 0.6);
+    }
+    span {
+      margin-right: 5px;
+    }
   }
 }
 
@@ -46,36 +73,73 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  h2 {
+    text-decoration: underline;
+    text-underline-position: under;
+  }
 }
 
 .sidebar__middle_btncont {
   width: 100%;
   button {
+    background-color: rgba($color-primary, 0.8);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    width: 93%;
+    justify-content: center;
+    padding: 5px;
+    color: rgba($color-light, 0.9);
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    span {
+      margin-right: 5px;
+    }
+    &:hover {
+      background-color: rgba($color-primary, 1);
+    }
+  }
+}
+
+//Project
+.sidebar__projects {
+  @extend .sidebar__generic;
+  li {
+    display: flex;
+    justify-content: space-between;
+    .project__close {
+      color: rgb(240, 125, 125);
+      background-color: rgba($color-dark, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      transition: all 0.5s ease;
+      &:hover {
+        background-color: rgba($color-dark, 0.9);
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.sidebar__lower {
+  div {
+    background-color: rgba($color-primary, 0.8);
     margin: auto;
     display: flex;
     align-items: center;
     width: 90%;
     justify-content: center;
     padding: 5px;
-  }
-}
-
-//Project
-.sidebar__projects {
-  padding: 0;
-  li {
-    width: 100%;
-    cursor: pointer;
-    background-color: rgb(124, 119, 119);
-    margin: auto;
-    margin-bottom: 3px;
-  }
-}
-
-.sidebar__lower {
-  div {
-    background-color: rgb(129, 126, 126);
-    margin-bottom: 3px;
+    color: rgba($color-light, 0.9);
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    &:hover {
+      background-color: rgba($color-primary, 1);
+    }
     cursor: pointer;
   }
 }

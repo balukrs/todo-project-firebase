@@ -140,3 +140,55 @@ export const useDelete = (docid) => {
 
   return [result, submitData];
 };
+
+//Delete batched projects
+
+export const useProjdel = (id) => {
+  const [data, setData] = useState(null);
+  const [result, setResult] = useState(null);
+
+  useEffect(() => {
+    const fethFunc = async () => {
+      var projDel = await FirebaseDB.collection("projects")
+        .where("userid", "==", id)
+        .where("projectid", "==", data)
+        .get();
+
+      var taskDel = await FirebaseDB.collection("tasks")
+        .where("userid", "==", id)
+        .where("projectid", "==", data)
+        .get();
+
+      var batch = FirebaseDB.batch();
+
+      projDel.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+
+      taskDel.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+
+      await batch
+        .commit()
+        .then(() => {
+          setResult("removed");
+        })
+        .catch((error) => {
+          setResult("notremoved");
+        });
+    };
+
+    if (data) {
+      fethFunc();
+    }
+
+    return () => setData(null);
+  }, [data]);
+
+  const submitData = (val) => {
+    setData(val);
+  };
+
+  return [result, submitData];
+};

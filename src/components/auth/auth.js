@@ -66,7 +66,7 @@ const Auth = ({ setdetails }) => {
     <div className={styles.firebase__auth}>
       <div className={styles.auth__container}>
         <div className={styles.auth_logo_cont}>
-          <SiTodoist color="#e83a0e" size="2em" />
+          <SiTodoist color="#D94625" size="2em" />
           <h2>To Do App</h2>
         </div>
         <div className={styles.google_auth_btn} onClick={() => loginUser()}>

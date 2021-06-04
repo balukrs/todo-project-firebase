@@ -1,6 +1,11 @@
 @import "../../style/scss/basestyle";
-@import "../../style/scss/variables";
 @import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
+
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-tertiary: var(--color-tertiary);
+$color-light: var(--color-light);
+$color-dark: var(--color-dark);
 
 .temp {
   position: absolute;
@@ -9,7 +14,7 @@
 }
 
 .firebase__auth {
-  background-color: $color-primary;
+  background-color: rgba($color-primary, 1);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -18,7 +23,7 @@
 }
 
 .auth__container {
-  background-color: $color-secondary;
+  background-color: rgba($color-secondary, 1);
   padding: 20px;
   font-family: "Roboto", sans-serif;
   width: 400px;
@@ -41,7 +46,7 @@
     margin: 0;
     margin-left: 8px;
     font-family: "Rock Salt", cursive;
-    color: white;
+    color: rgba($color-tertiary, 1);
   }
 }
 
@@ -53,11 +58,11 @@
   outline: none;
   border-radius: 2px;
   margin-bottom: 8px;
-  background-color: rgb(245, 241, 241);
+  background-color: rgba($color-light, 1);
   transition: all 0.4s ease;
   z-index: 2;
   &:hover {
-    background-color: darken(rgb(245, 241, 241), 10%);
+    background-color: rgba($color-tertiary, 1);
   }
 }
 .register___btn {
@@ -65,7 +70,7 @@
 }
 .google___btn {
   @extend .login___btn;
-  background-color: white;
+  background-color: rgba($color-light, 1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,7 +94,7 @@
   flex-direction: column;
   margin-top: 5px;
   padding: 8px;
-  background-color: rgba(97, 110, 134, 0.534);
+  background-color: rgba($color-tertiary, 1);
   border-radius: 3px;
   width: 90%;
   margin: auto;
@@ -103,12 +108,16 @@
   margin-bottom: 5px;
   position: relative;
   .input__prime {
-    width: 100%;
+    width: 97%;
+    border: none;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: rgba($color-light, 1);
   }
 }
 
 .form__error {
-  color: rgb(236, 160, 160);
+  color: rgb(231, 75, 75);
   font-size: 12px;
 }
 .login__error {

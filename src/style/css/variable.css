@@ -1,0 +1,9 @@
+:root {
+  --color-primary: 61, 63, 128;
+  --color-secondary: 38, 46, 97;
+  --color-tertiary: 152, 175, 219;
+  --color-light: 208, 220, 243;
+  --color-dark: 0, 13, 37;
+  --color-extra: 51, 48, 105;
+  font-family: "Roboto", sans-serif;
+}

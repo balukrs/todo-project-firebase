@@ -7,13 +7,13 @@ import { LoginContext } from "../../../context";
 
 const Mainlayout = () => {
   const logindetails = useContext(LoginContext);
-  const { uid } = logindetails;
+  const { uid, photoURL, email } = logindetails;
   const [nav, setNav] = useState("INBOX");
 
   return (
     <div className={styles.main__container}>
       <div className={styles.layout__cointainer}>
-        <Sidebar toggle={setNav} id={uid} />
+        <Sidebar toggle={setNav} id={uid} pic={photoURL} email={email} />
         <Sidepanel id={uid} nav={nav} />
       </div>
     </div>
