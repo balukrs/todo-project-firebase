@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./sidepanel.module.scss";
 import "../../../style/css/sidepanel.css";
 
@@ -18,6 +18,7 @@ const Sidepanel = ({ id, nav, animate, setanimate }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [status, setStatus] = useState(false);
   const [anime, setAnime] = useState(null);
+  const formRef = useRef();
 
   useEffect(() => {
     if (animate === "forwards") {
@@ -51,6 +52,24 @@ const Sidepanel = ({ id, nav, animate, setanimate }) => {
     setRes(formdata);
   };
 
+  const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
+    <button
+      className={styles.custom__date}
+      onClick={onClick}
+      ref={ref}
+      type="button"
+    >
+      {value}
+    </button>
+  ));
+
+  const onEnterPress = (e) => {
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      formRef.current.submit();
+    }
+  };
+
   return (
     <div className={`${styles.sidepanel} ${anime}`}>
       <div className={styles.real__header}>
@@ -63,29 +82,26 @@ const Sidepanel = ({ id, nav, animate, setanimate }) => {
         >
           <GiHamburgerMenu size="1.2em" />
         </span>
-        <span>Heading</span>
+        <span>{nav === "NEXT_7" ? "Next 7 days" : nav}</span>
       </div>
       {nav === "COMPLETED" ? null : (
         <header className={styles.header}>
-          <form onSubmit={(e) => handleSubmit(e)}>
+          <form onSubmit={(e) => handleSubmit(e)} ref={formRef}>
             <input
-              placeholder={`Enter Task to ${nav}`}
+              placeholder={`Enter Task to ${
+                nav === "NEXT_7" ? "Next 7 days" : nav
+              } (Press Enter to save)`}
               className={styles.header__input}
               onChange={(e) => setInputval(e.target.value)}
               value={inputval}
+              onKeyPress={(e) => onEnterPress(e)}
             />
             <DatePicker
               dateFormat="dd/MM/yyyy"
               selected={startDate}
               onChange={(date) => setStartDate(date)}
+              customInput={<CustomInput />}
             />
-            <button
-              type="submit"
-              className={styles.header__submit}
-              disabled={status}
-            >
-              Submit
-            </button>
           </form>
           <div
             className={styles.header__progress}

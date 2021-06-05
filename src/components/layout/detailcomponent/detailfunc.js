@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../../../style/css/sidepanel.css";
 import SplitButton from "../splitbutton/splitbutton.js";
 
@@ -14,7 +14,7 @@ const Detailfunc = ({ nav, id }) => {
   const [doc, setDoc] = useState(null);
   const [data, setData] = useState([]);
   let inbdata = useFetch(id, nav);
-
+  const idRef = useRef(null);
   const submit = useChange(doc);
 
   const addStyle = (e, docid) => {
@@ -30,6 +30,7 @@ const Detailfunc = ({ nav, id }) => {
 
   useEffect(() => {
     setData(inbdata);
+    return () => setData([]);
   }, [inbdata]);
 
   useEffect(() => {
@@ -47,11 +48,7 @@ const Detailfunc = ({ nav, id }) => {
   return data.map((item, index) => (
     <div className="sidepanel__details" key={index}>
       <div className={styles.sidepanel__details__checkbox}>
-        <input
-          type="checkbox"
-          onChange={(e) => addStyle(e, item.docid)}
-          value="ok"
-        />
+        <input type="checkbox" onChange={(e) => addStyle(e, item.docid)} />
       </div>
       <div>
         <h4>{item.task}</h4>

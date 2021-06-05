@@ -28,9 +28,6 @@ $color-extra: var(--color-extra);
   min-height: 500px;
   width: 600px;
   padding: 20px;
-  header {
-    padding: 5px;
-  }
 }
 
 .animate {
@@ -55,20 +52,27 @@ $color-extra: var(--color-extra);
     width: 600px;
   }
 }
+// header
+.header {
+  margin-bottom: 10px;
+}
+// Input
 .header__input {
-  width: 70%;
-  padding: 5px;
+  width: 80%;
+  padding: 7px;
   margin-right: 5px;
   border: none;
+  background-color: rgba($color-extra, 0.5);
+  color: rgba($color-dark, 1);
+  border-radius: 3px;
 }
-.header__submit {
-  padding: 5px;
-  background-color: rgba($color-primary, 1);
+
+// Date
+
+.custom__date {
+  border-radius: 3px;
   border: none;
-  &:hover {
-    background-color: rgba($color-primary, 1);
-  }
-  box-shadow: 0 2px 2px rgb(29, 29, 29);
-  transition: all 0.5s ease;
-  border-radius: 2px;
+  padding: 7px;
+  background-color: rgba($color-secondary, 0.6);
+  color: rgba($color-light, 0.9);
 }
