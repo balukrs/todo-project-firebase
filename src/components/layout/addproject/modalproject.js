@@ -58,7 +58,9 @@ const Modalproject = ({ status, close }) => {
   const modalDetails = () => {
     return (
       <form>
-        <header>Add Project</header>
+        <header>
+          <h2>Add Project</h2>
+        </header>
         <div className={styles.input__cont}>
           <input
             placeholder="Enter project name"

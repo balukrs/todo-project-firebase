@@ -13,6 +13,30 @@ $color-extra: var(--color-extra);
   flex-direction: column;
   width: 250px;
   color: rgba($color-light, 0.8);
+  overflow: hidden;
+}
+
+.animate {
+  animation: shrink 0.5s ease forwards;
+}
+.revanime {
+  animation: expand 0.5s ease forwards;
+}
+@keyframes shrink {
+  from {
+    width: 250px;
+  }
+  to {
+    width: 0px;
+  }
+}
+@keyframes expand {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 250px;
+  }
 }
 
 .sidebar__header {

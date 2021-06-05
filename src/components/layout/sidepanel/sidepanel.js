@@ -7,15 +7,25 @@ import { useTask } from "../../../hooks";
 import Detailfunc from "../detailcomponent/detailfunc";
 import Extrafunc from "../extracomponent/extrafunc";
 
+import { GiHamburgerMenu } from "react-icons/gi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import LinearProgress from "@material-ui/core/LinearProgress";
 
-const Sidepanel = ({ id, nav }) => {
+const Sidepanel = ({ id, nav, animate, setanimate }) => {
   const [res, setRes] = useTask("tasks");
   const [inputval, setInputval] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [status, setStatus] = useState(false);
+  const [anime, setAnime] = useState(null);
+
+  useEffect(() => {
+    if (animate === "forwards") {
+      setAnime(styles.animate);
+    } else if (animate === "backwards") {
+      setAnime(styles.revanime);
+    }
+  }, [animate]);
 
   useEffect(() => {
     if (res === "added") {
@@ -42,7 +52,19 @@ const Sidepanel = ({ id, nav }) => {
   };
 
   return (
-    <div className={styles.sidepanel}>
+    <div className={`${styles.sidepanel} ${anime}`}>
+      <div className={styles.real__header}>
+        <span
+          onClick={() =>
+            animate === "forwards"
+              ? setanimate("backwards")
+              : setanimate("forwards")
+          }
+        >
+          <GiHamburgerMenu size="1.2em" />
+        </span>
+        <span>Heading</span>
+      </div>
       {nav === "COMPLETED" ? null : (
         <header className={styles.header}>
           <form onSubmit={(e) => handleSubmit(e)}>

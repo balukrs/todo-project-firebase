@@ -173,6 +173,7 @@ export const useProjdel = (id) => {
         .commit()
         .then(() => {
           setResult("removed");
+          setResult("notremoved");
         })
         .catch((error) => {
           setResult("notremoved");

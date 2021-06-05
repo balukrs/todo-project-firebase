@@ -26,7 +26,7 @@ const App = () => {
         root?.style.setProperty("--color-tertiary", "152, 175, 219");
         root?.style.setProperty("--color-light", "208, 220, 243");
         root?.style.setProperty("--color-dark", "0, 13, 37");
-        root?.style.setProperty("--color-extra", "51, 48, 105");
+        root?.style.setProperty("--color-extra", "231, 230, 255");
         break;
     }
   }, [Theme]);

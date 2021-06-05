@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Modalproject from "../addproject/modalproject";
 import styles from "./sidebar.module.scss";
@@ -6,24 +6,45 @@ import styles from "./sidebar.module.scss";
 import { RiInboxArchiveFill } from "react-icons/ri";
 import { IoToday } from "react-icons/io5";
 import { IoCalendar } from "react-icons/io5";
-import { BiChevronDown } from "react-icons/bi";
 import { SiTodoist } from "react-icons/si";
-import Avatar from "@material-ui/core/Avatar";
 import { RiLogoutBoxRLine } from "react-icons/ri";
 import { IoMdAddCircle } from "react-icons/io";
+
+import Snackbar from "@material-ui/core/Snackbar";
+import Avatar from "@material-ui/core/Avatar";
 
 import { auth } from "../../../firebase";
 
 import { useProject } from "../../../hooks";
 import { useProjdel } from "../../../hooks";
 
-const Sidebar = ({ toggle, id, pic, email }) => {
+const Sidebar = ({ toggle, id, pic, email, animate }) => {
   const [modal, setModal] = useState(false);
+  const [open, setOpen] = useState(false);
   const projects = useProject(id);
   const [del, setDel] = useProjdel(id);
+  const [anime, setAnime] = useState(null);
+
+  useEffect(() => {
+    if (animate === "forwards") {
+      setAnime(styles.animate);
+    } else if (animate === "backwards") {
+      setAnime(styles.revanime);
+    }
+  }, [animate]);
+
+  useEffect(() => {
+    if (del === "removed") {
+      setOpen(true);
+      handleClick("INBOX");
+    }
+  }, [del]);
 
   const handleClick = (val) => {
     toggle(val);
+  };
+  const handleClose = (val) => {
+    setOpen(false);
   };
 
   const delProjects = (project) => {
@@ -50,7 +71,7 @@ const Sidebar = ({ toggle, id, pic, email }) => {
   };
 
   return (
-    <div className={styles.sidebar} data-testid="sidebar">
+    <div className={`${styles.sidebar} ${anime}`} data-testid="sidebar">
       <header className={styles.sidebar__header}>
         <nav>
           <div className={styles.logo}>
@@ -121,6 +142,11 @@ const Sidebar = ({ toggle, id, pic, email }) => {
 
       <div className={styles.sidebar__lower}>
         <div onClick={() => handleClick("COMPLETED")}>Completed</div>
+      </div>
+      <div>
+        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+          <span>Project deleted successfully....</span>
+        </Snackbar>
       </div>
     </div>
   );

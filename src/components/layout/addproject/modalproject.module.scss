@@ -1,3 +1,12 @@
+@import "../../../style/scss/basestyle.scss";
+
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-secondary);
+$color-tertiary: var(--color-tertiary);
+$color-light: var(--color-light);
+$color-dark: var(--color-dark);
+$color-extra: var(--color-extra);
+
 .modal__conatiner {
   position: fixed;
   overflow: hidden;
@@ -14,8 +23,27 @@
 
 .modal__conatiner {
   form {
-    background-color: rgb(4, 28, 56);
-    width: 400px;
-    height: 250px;
+    background-color: rgba($color-secondary, 1);
+    box-shadow: 0.5px 1px 6px rgba($color-light, 0.6);
+    padding: 20px;
+    min-width: 400px;
+    height: 180px;
+    h2 {
+      color: rgba($color-light, 0.9);
+    }
+    input {
+      padding: 8px;
+      width: 80%;
+      background-color: rgba($color-light, 0.8);
+      border: none;
+      border-radius: 3px;
+      margin: 10px 0px;
+    }
+    button {
+      @extend .small__btn;
+      background-color: rgba($color-tertiary, 1);
+      margin-right: 10px;
+      padding: 5px 10px;
+    }
   }
 }
