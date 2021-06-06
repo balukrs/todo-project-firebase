@@ -1,6 +1,7 @@
 import moment from "moment";
 
 export const filterDays = (arr) => {
+  // eslint-disable-next-line
   const filtered = arr.filter((item) => {
     const itemtime = moment(item.date.toDate());
     const currenttime = moment();
@@ -13,6 +14,7 @@ export const filterDays = (arr) => {
 };
 
 export const filterToday = (arr) => {
+  // eslint-disable-next-line
   const filtered = arr.filter((item) => {
     const itemtime = moment(item.date.toDate());
     const currenttime = moment();

@@ -7,6 +7,7 @@ export const useFetch = (id, project) => {
 
   useEffect(() => {
     if (project === "TODAY" || project === "NEXT_7") {
+      // eslint-disable-next-line
       project = "INBOX";
     }
 
@@ -89,25 +90,24 @@ export const useChange = (docid) => {
           projectid: val,
         })
         .then(() => {
-          setResult("changed");
-          setResult("notchanged");
+          setResult("modified");
+          setResult("notmodify");
         })
         .catch((error) => {
-          setResult("notchanged");
+          setResult("notmodify");
         });
     };
 
     if (data) {
       fethFunc(data);
     }
-    return () => setData(null);
   }, [data, docid]);
 
   const submitData = (val) => {
     setData(val);
   };
 
-  return submitData;
+  return [result, submitData];
 };
 
 //Remove Task
@@ -185,6 +185,7 @@ export const useProjdel = (id) => {
     }
 
     return () => setData(null);
+    // eslint-disable-next-line
   }, [data]);
 
   const submitData = (val) => {

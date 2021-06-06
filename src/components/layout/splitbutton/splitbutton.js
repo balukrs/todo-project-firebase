@@ -24,12 +24,18 @@ const useStyles = makeStyles((theme) => ({
   },
   mainmenu: {
     "& .MuiPaper-root": {
-      backgroundColor: "lightblue",
+      backgroundColor: "rgba(233, 227, 227, 0.6)",
+      padding: 0,
+    },
+  },
+  main__menu: {
+    "& .MuiPaper-root": {
+      backgroundColor: "rgba(205, 202, 202, 0.9)",
       padding: 0,
     },
   },
   sub: {
-    padding: "3px 15px",
+    padding: "2px 20px",
   },
 }));
 
@@ -37,7 +43,8 @@ const SplitButton = ({ userid, docid }) => {
   const classes = useStyles();
   const posEl = useRef();
   const projects = useProject(userid);
-  const setRes = useChange(docid);
+  // eslint-disable-next-line
+  const [res, setRes] = useChange(docid);
   // eslint-disable-next-line
   const [del, setDel] = useDelete(docid);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -126,6 +133,7 @@ const SplitButton = ({ userid, docid }) => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
           anchorEl={anchorEl}
+          className={classes.main__menu}
         >
           <MenuItem onClick={subhandleClick} className={classes.menu}>
             Move to <RiArrowDropRightFill size="1.5em" />

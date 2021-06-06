@@ -38,6 +38,7 @@ const Sidebar = ({ toggle, id, pic, email, animate }) => {
       setOpen(true);
       handleClick("INBOX");
     }
+    // eslint-disable-next-line
   }, [del]);
 
   const handleClick = (val) => {

@@ -64,7 +64,7 @@ const Sidepanel = ({ id, nav, animate, setanimate }) => {
   ));
 
   const onEnterPress = (e) => {
-    if (e.keyCode == 13 && e.shiftKey == false) {
+    if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
       formRef.current.submit();
     }

@@ -2,7 +2,6 @@ import React from "react";
 import SplitButton from "../splitbutton/splitbutton.js";
 import { useFetch } from "../../../hooks";
 
-import styles from "./extrafunc.module.scss";
 import moment from "moment";
 import "../../../style/css/sidepanel.css";
 
@@ -11,13 +10,13 @@ const Extrafunc = ({ nav, id }) => {
 
   return inbdata.map((item, index) => (
     <div className="sidepanel__details" key={index}>
-      <div>
+      <div className="sidepanel__details__task">
         <h4>{item.task}</h4>
       </div>
-      <div>
+      <div className="sidepanel__details__time">
         <h5>{moment(item.date.toDate()).calendar()}</h5>
       </div>
-      <div>
+      <div className="sidepanel__details__btn">
         <SplitButton userid={id} docid={item.docid} />
       </div>
     </div>
