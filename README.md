@@ -6,5 +6,6 @@ A simple react JS application to keep track of your activities.
 <br />
 <br />
 Firebase is implemented for authentication purpose and for storing data making use of its 'Realtime Database'.
+Custom hooks are used to interact with firebase database.
 The components are styled using SASS and Material-ui.
 Dark mode is also added.
